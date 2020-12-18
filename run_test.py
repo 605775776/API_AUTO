@@ -1,5 +1,7 @@
 import unittest
 import os
+import time
+from datetime import datetime
 
 from HwTestReport import HTMLTestReport
 from test_cases import test_login
@@ -46,7 +48,10 @@ if not os.path.exists(report_path):
 #
 #     # 运行测试用例
 #     runner.run(suite_total)
-file_path = os.path.join(report_path, 'retult.html')
+# time_str = datetime.now().strftime('%Y%m%d%H%M%S')
+time_str = datetime.now().strftime('%Y%m%d%H%M')
+file_name = 'test_report_' + time_str + '.html'
+file_path = os.path.join(report_path, file_name, )
 # with open(file_path, 'wb') as f:
 #     # 使用HTMLTestRunner
 #     runner = HTMLTestReport(f)
