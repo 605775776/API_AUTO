@@ -1,5 +1,7 @@
 import unittest
 import os
+
+from HwTestReport import HTMLTestReport
 from test_cases import test_login
 #
 # 收集测试用例 TestLoader 加载器 加载测试用例
@@ -45,6 +47,15 @@ if not os.path.exists(report_path):
 #     # 运行测试用例
 #     runner.run(suite_total)
 file_path = os.path.join(report_path, 'retult.html')
-with open(file_path, 'w', encoding='utf8') as f:
-    # 使用HTMLTestRunner
-    pass
+# with open(file_path, 'wb') as f:
+#     # 使用HTMLTestRunner
+#     runner = HTMLTestReport(f)
+#     runner.run(suite_total)
+
+with open(file_path, 'wb') as f:
+    runner = HTMLTestReport(stream=f,
+                            verbosity=2,
+                            title='HwTestReport 测试',
+                            description='带饼图，带详情',
+                            tester='Johnny')
+    runner.run(suite_total)
