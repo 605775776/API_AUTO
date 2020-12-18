@@ -52,10 +52,10 @@ file_path = os.path.join(report_path, 'retult.html')
 #     runner = HTMLTestReport(f)
 #     runner.run(suite_total)
 
+
+# 要用二进制打开
 with open(file_path, 'wb') as f:
     runner = HTMLTestReport(stream=f,
                             verbosity=2,
-                            title='HwTestReport 测试',
-                            description='带饼图，带详情',
-                            tester='Johnny')
+                            )
     runner.run(suite_total)
