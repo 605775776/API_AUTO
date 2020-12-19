@@ -1,36 +1,35 @@
 import unittest
+import warnings
 from common.request_handler import RequestsHandler
 from common.excel_handler import ExccelHandler
 # ddt ==> data driven testing 数据驱动思想
 # ddt 的库 要和unittest组合使用
+from common.excel_handler import ExccelHandler
 import ddt
 
-test_data = [
-    {"url": "http://120.78.128.25:8766/futureloan/member/login",
-     "method": "post",
-     "headers": {"X-Lemonban-Media-Type": "lemonban.v2"},
-     "data": {"mobile_phone": "18111111111", "pwd": "12345678"},
-     "expected": "hello world"
-     },
-]
+test_data = ExccelHandler(r'd:\case_data.xlsx', 'Sheet1').read()
+print(test_data)
+@ddt.ddt
 class TestLogin(unittest.TestCase):
 
     def setUp(self) -> None:
-        pass
+        warnings.simplefilter('ignore', ResourceWarning)
 
     def tearDown(self) -> None:
         pass
 
-
     # 还是要分开 独立测试用例 但是逻辑重复 要应用数据驱动
-    def test_login_success(self):
-        data = test_data[0]
-        res = RequestsHandler().visit(data['url'],
-                                      data['method'],
-                                      json=data['data'],
-                                      headers=data['headers'])
+    # *test_data 当中的一组测试数据，赋值到data_info这个参数
+    @ddt.data(*test_data)
+    def test_login(self, data_info):
+        print(data_info['headers'])
+        res = RequestsHandler().visit(data_info['url'],
+                                      data_info['method'],
+                                      json=data_info['data'],
+                                      headers=data_info['headers'])
+
         # try:
-        self.assertEqual(res, data['expected'])
+        self.assertEqual(res, data_info['expected'])
         #     print("测试用例通过")
         # except:
         #     print("测试用例不通过")
