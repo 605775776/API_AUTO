@@ -1,9 +1,8 @@
 import unittest
 import os
-import time
 from datetime import datetime
 
-from HwTestReport import HTMLTestReport
+from common.HwTestReport import HTMLTestReport
 from test_cases import test_login
 #
 # 收集测试用例 TestLoader 加载器 加载测试用例
