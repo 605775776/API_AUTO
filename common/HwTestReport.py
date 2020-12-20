@@ -20,12 +20,12 @@ from xml.sax import saxutils
 
 # 支持 python2 and python3  --zhaohongwei
 python3 = (sys.version_info[0] > 2)
-if python3:
-    import io as StringIO
-else:
-    import StringIO
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
+# if python3:
+import io as StringIO
+# else:
+#     import StringIO
+#     reload(sys)
+#     sys.setdefaultencoding('utf-8')
 
 
 

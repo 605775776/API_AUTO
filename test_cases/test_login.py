@@ -6,9 +6,10 @@ from common.excel_handler import ExccelHandler
 # ddt 的库 要和unittest组合使用
 from common.excel_handler import ExccelHandler
 import ddt
-
+from libs import ddt
 test_data = ExccelHandler(r'd:\case_data.xlsx', 'Sheet1').read()
-print(test_data)
+
+
 @ddt.ddt
 class TestLogin(unittest.TestCase):
 
