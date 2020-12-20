@@ -1,0 +1,13 @@
+logger:
+  name: python25
+  file: python25.txt
+  level: DEBUG
+
+excel:
+  file: case_data.xlsx
+  sheet: Sheet1
+
+request:
+  method:post
+
+demo: '25'

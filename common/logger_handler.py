@@ -1,5 +1,7 @@
 import logging
 
+from common.config import LoggerConfig
+
 
 class LoggerHandler(logging.Logger):
 
@@ -8,7 +10,6 @@ class LoggerHandler(logging.Logger):
                  level='DEBUG',
                  file=None,
                  format='%(filename)s-%(lineno)d-%(name)s-%(levelname)s-%(message)s'):
-
         # Logger(name) 实例化
         super().__init__(name)
         # logger = logging.getLogger(name)
@@ -20,7 +21,7 @@ class LoggerHandler(logging.Logger):
 
         # 初始化处理器filename
         if file:
-            file_handler = logging.FileHandler()
+            file_handler = logging.FileHandler(file)
             # 设置handler的级别
             file_handler.setLevel('DEBUG')
             # 设置日志格式
@@ -33,9 +34,12 @@ class LoggerHandler(logging.Logger):
         stream_handler.setFormatter(fmt)
         self.addHandler(stream_handler)
 
+    def info(self, msg):
+        super().info(msg)
+        print("我正在使用。。。")
+
+
+logger = LoggerHandler(LoggerConfig.logger_name, LoggerConfig.logger_file)
 if __name__ == '__main__':
     logger = LoggerHandler()
-    logger.debug('hello')
-
-
-
+    logger.info('hello')
