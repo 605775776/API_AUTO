@@ -58,7 +58,7 @@ class Template_CN(object):
 
     # 增加 tester  --zhaohongwei
     DEFAULT_TITLE = '测试报告'
-    DEFAULT_DESCRIPTION = '小丁的自动化测试脚本'
+    DEFAULT_DESCRIPTION = '小丁的接口自动化测试脚本'
     DEFAULT_TESTER = '丁善文'
 
     # ------------------------------------------------------------------------

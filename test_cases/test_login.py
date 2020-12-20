@@ -22,14 +22,15 @@ class TestLogin(unittest.TestCase):
     # *test_data 当中的一组测试数据，赋值到data_info这个参数
     @ddt.data(*test_data)
     def test_login(self, data_info):
-        print(data_info['headers'])
+        # print(type(eval(data_info['headers'])))
+
         res = RequestsHandler().visit(data_info['url'],
                                       data_info['method'],
-                                      json=data_info['data'],
-                                      headers=data_info['headers'])
+                                      json=eval(data_info['data']),
+                                      headers=eval(data_info['headers']))
 
         # try:
-        self.assertEqual(res, data_info['expected'])
+        self.assertEqual(res['code'], data_info['expected'])
         #     print("测试用例通过")
         # except:
         #     print("测试用例不通过")
