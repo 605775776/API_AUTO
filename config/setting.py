@@ -1,15 +1,16 @@
-# 写成类模块
 import os
-class LoggerConfig:
-
-    logger_name = 'python25'
-    logger_file = 'python25.txt'
-    level = 'DEBUG'
 
 class Config:
 
     # 项目路径
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # config路径
+    config_path = os.path.join(root_path, 'config')
+
+    # 日志配置路径
+    #logger_setting_path = os.path.join(root_path, 'config/config.yaml')
+    yaml_config_path = os.path.join(config_path, 'config.yaml')
 
     # 测试数据路径
     data_path = os.path.join(root_path, 'data/cases.xlsx')
@@ -26,9 +27,3 @@ class DevConfig(Config):
 
     # 项目的域名
     host = 'http://120.78.128.25:8766/futureloan'
-
-if __name__ == '__main__':
-    print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    print(os.path.join(root_path, 'data\cases.xlsx'))

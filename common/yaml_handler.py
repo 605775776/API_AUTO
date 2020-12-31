@@ -2,7 +2,7 @@ import yaml
 
 
 # 写成类
-class YamlHandler():
+class YamlHandler:
 
     def __init__(self, file, encoding='utf-8'):
         self.file = file
