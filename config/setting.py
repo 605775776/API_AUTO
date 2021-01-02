@@ -21,6 +21,11 @@ class Config:
     # 测试用例路径
     case_path = os.path.join(root_path, 'test_cases')
 
+    # log
+    log_path = os.path.join(root_path, 'log')
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
+
     # 测试报告路径
     report_path = os.path.join(root_path, 'report')
     if not os.path.exists(report_path):
