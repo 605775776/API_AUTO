@@ -68,12 +68,12 @@ class TestRegister(unittest.TestCase):
             # 判断 #new_phone#
             if '#new_phone#' in test_data['json']:
                 while True:
-                    mobile = generate_mobile()
+                    gen_mobile = generate_mobile()
                     # 查数据库 若存在 再生成一个 直到数据库中不存在为止
-                    mobile = self.db.query('select * from member where mobile_phone=%s;', args=[mobile])
+                    mobile = self.db.query('select * from member where mobile_phone=%s;', args=[gen_mobile])
                     if not mobile:
                         break
-                test_data['json'] = test_data['json'].replace("#new_phone#", mobile['mobile_phone'])
+                test_data['json'] = test_data['json'].replace("#new_phone#", gen_mobile)
         res = self.req.visit(DevConfig.host + test_data['url'],
                              test_data['method'],
                              json=json.loads(test_data['json']),
