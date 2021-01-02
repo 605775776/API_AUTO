@@ -36,6 +36,6 @@ class DevConfig(Config):
     # 项目的域名
     host = 'http://120.78.128.27:8765/futureloan'
 
-# config = DevConfig()
-if __name__ == '__main__':
-    print(Config.yaml_config_path)
+config = DevConfig()
+# if __name__ == '__main__':
+#     print(Config.yaml_config_path)

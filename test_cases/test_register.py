@@ -2,7 +2,7 @@ import unittest
 import json
 import yaml
 
-from common.helper import generate_mobile
+from middleware.helper import generate_mobile
 from common.request_handler import RequestsHandler
 from common.excel_handler import ExcelHandler
 from common.logger_handler import LoggerHandler

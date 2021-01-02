@@ -30,9 +30,9 @@ database:
   database: 'rls_edu_crm'
   cursorclass: 'DictCursor'
 
-
-
-
+user:
+  mobile_phone: '13712341234'
+  pwd: '12345678'
 
 
 
