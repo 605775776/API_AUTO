@@ -9,18 +9,9 @@ from common.logger_handler import LoggerHandler
 from common.db_handler import DBHandler
 from libs import ddt
 from config.setting import Config, DevConfig
-
+from middleware.yaml_handler import yaml_data
 # ddt ==> data driven testing 数据驱动思想
 # ddt 的库 要和unittest组合使用
-
-from common.yaml_handler import YamlHandler
-
-# test_data = ExcelHandler(r'd:\case_data.xlsx', 'Sheet1').read()
-
-# yaml 读取
-f = open(Config.yaml_config_path, encoding='utf-8')
-yaml_data = yaml.load(f, Loader=yaml.FullLoader)
-print(yaml_data)
 
 
 @ddt.ddt

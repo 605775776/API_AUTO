@@ -21,8 +21,10 @@ def login():
     """登录，返回的是token 访问接口"""
     req = RequestsHandler()
     res = req.visit(Config.host + '/member/login',
-                    'post'
-                    params=None, data=None, json=None,)
+                    'post',
+                    json=yaml_data['user'],
+                    headers={"X-Lemonban-Media-Type": "lemonban.v2"})
+    return res
 
 
 
