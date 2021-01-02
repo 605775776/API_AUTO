@@ -26,4 +26,4 @@ class Config:
 class DevConfig(Config):
 
     # 项目的域名
-    host = 'http://120.78.128.25:8766/futureloan'
+    host = 'http://120.78.128.25:8765/futureloan'

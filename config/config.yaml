@@ -4,7 +4,7 @@
 
 logger:
   name: python25
-  level: warning
+  level: WARNING
   file: python25.txt
 
 excel:
