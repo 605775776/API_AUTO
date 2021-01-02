@@ -5,6 +5,9 @@ class Config:
     # 项目路径
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+    # common路径
+    common_path = os.path.join(root_path, 'common')
+
     # config路径
     config_path = os.path.join(root_path, 'config')
 
@@ -27,3 +30,7 @@ class DevConfig(Config):
 
     # 项目的域名
     host = 'http://120.78.128.27:8765/futureloan'
+
+# config = DevConfig()
+if __name__ == '__main__':
+    print(Config.yaml_config_path)

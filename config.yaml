@@ -1,0 +1,32 @@
+# loggger_name
+# logger_level
+# logger_file
+
+logger:
+  name: python25
+  level: WARNING
+  file: python25.txt
+
+excel:
+  file: test_cases.xlsx
+  sheet: Register
+
+
+database:
+  host: "120.78.128.25"
+  port: 3306
+  user: "future"
+  password: '123456'
+  charset: 'utf8'
+  database: 'futureloan'
+  cursorclass: 'DictCursor'
+
+
+
+
+
+
+
+
+
+

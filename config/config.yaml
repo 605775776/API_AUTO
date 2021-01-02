@@ -10,3 +10,30 @@ logger:
 excel:
   file: test_cases.xlsx
   sheet: Register
+
+
+#database:
+#  host: "120.78.128.25"
+#  port: 3306
+#  user: "future"
+#  password: '123456'
+#  charset: 'utf8'
+#  database: 'futureloan'
+#  cursorclass: 'DictCursor'
+
+database:
+  host: "172.16.1.89"
+  port: 3306
+  user: "rlsuser"
+  password: 'paa!v372Gw'
+  charset: 'utf8'
+  database: 'rls_edu_crm'
+  cursorclass: 'DictCursor'
+
+
+
+
+
+
+
+
