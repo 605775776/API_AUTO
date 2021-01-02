@@ -2,11 +2,11 @@
 # logger_level
 # logger_file
 
--logger
+logger:
   name: python25
   level: warning
   file: python25.txt
 
 excel:
-  file: cases.xlsx
-  sheet: login
+  file: test_cases.xlsx
+  sheet: Register

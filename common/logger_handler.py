@@ -39,7 +39,7 @@ class LoggerHandler(logging.Logger):
         print("我正在使用。。。")
 
 
-logger = LoggerHandler(LoggerConfig.logger_name, LoggerConfig.logger_file)
+logger = LoggerHandler(LoggerConfig.logger_name, LoggerConfig.level, LoggerConfig.logger_file)
 if __name__ == '__main__':
     logger = LoggerHandler()
     logger.info('hello')

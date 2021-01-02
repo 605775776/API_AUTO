@@ -13,7 +13,7 @@ class Config:
     yaml_config_path = os.path.join(config_path, 'config.yaml')
 
     # 测试数据路径
-    data_path = os.path.join(root_path, 'data/cases.xlsx')
+    data_path = os.path.join(root_path, 'data\\test_cases.xlsx')
 
     # 测试用例路径
     case_path = os.path.join(root_path, 'test_cases')

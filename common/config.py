@@ -3,7 +3,7 @@ import os
 class LoggerConfig:
 
     logger_name = 'python25'
-    logger_file = 'python25.txt'
+    logger_file = 'python251111111.txt'
     level = 'DEBUG'
 
 class Config:
@@ -12,7 +12,7 @@ class Config:
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # 测试数据路径
-    data_path = os.path.join(root_path, 'data/cases.xlsx')
+    data_path = os.path.join(root_path, 'data\\test_cases.xlsx')
 
     # 测试用例路径
     case_path = os.path.join(root_path, 'test_cases')
@@ -27,8 +27,8 @@ class DevConfig(Config):
     # 项目的域名
     host = 'http://120.78.128.25:8766/futureloan'
 
-if __name__ == '__main__':
-    print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    print(os.path.join(root_path, 'data\cases.xlsx'))
+# if __name__ == '__main__':
+    # print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    # root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #
+    # print(os.path.join(root_path, 'data\cases.xlsx'))

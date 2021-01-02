@@ -1,13 +1,13 @@
 import unittest
 import warnings
 from common.request_handler import RequestsHandler
-from common.excel_handler import ExccelHandler
+from common.excel_handler import ExcelHandler
 # ddt ==> data driven testing 数据驱动思想
 # ddt 的库 要和unittest组合使用
-from common.excel_handler import ExccelHandler
+from common.excel_handler import ExcelHandler
 import ddt
 from libs import ddt
-test_data = ExccelHandler(r'd:\case_data.xlsx', 'Sheet1').read()
+test_data = ExcelHandler(r'd:\case_data.xlsx', 'Sheet1').read()
 
 
 @ddt.ddt

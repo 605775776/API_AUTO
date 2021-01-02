@@ -10,7 +10,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 4、指定单元格写入数据（使用静态方法，不要使用实例方法）
 
 """
-class ExccelHandler():
+class ExcelHandler():
 
     """操作excel"""
     def __init__(self, file, sheet_name):
@@ -85,9 +85,9 @@ class ExccelHandler():
         wb.close()
 
 
-if __name__ == '__main__':
-    excel = ExccelHandler(r'd:\case_data.xlsx', 'Sheet1')
-    excel.write(r'd:\case_data.xlsx', 'Sheet1', 3, 1, 'new_value')
+# if __name__ == '__main__':
+#     excel = ExcelHandler(r'd:\case_data.xlsx', 'Sheet1')
+#     excel.write(r'd:\case_data.xlsx', 'Sheet1', 3, 1, 'new_value')
     # print(data)
     # print(data)
 
