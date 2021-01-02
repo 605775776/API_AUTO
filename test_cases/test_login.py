@@ -30,8 +30,6 @@ class TestLogin(unittest.TestCase):
                                       json=eval(data_info['data']),
                                       headers=eval(data_info['headers']))
 
-        # try:
+
         self.assertEqual(res['code'], data_info['expected'])
-        #     print("测试用例通过")
-        # except:
-        #     print("测试用例不通过")
+

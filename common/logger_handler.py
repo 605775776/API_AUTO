@@ -40,5 +40,5 @@ class LoggerHandler(logging.Logger):
 
 # logger = LoggerHandler(logger_name, level, logger_file)
 if __name__ == '__main__':
-    logger = LoggerHandler()
+    logger = LoggerHandler(level='WARNING')
     logger.info('hello')
