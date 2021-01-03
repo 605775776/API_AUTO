@@ -28,15 +28,29 @@ def login():
     return res
 
 
-    def save_token():
-        res = login()
-        token = jsonpath(data, '$..token')[0]
-        token_type = jsonpath(data, '$..token_type')[0]
-        member_id = jsonpath(data, '$..id')[0]
+# 上下文
+class Context:
 
-if __name__ == '__main__':
+    token = ""
+    member_id = None
+    leave_amount = 0
+
+
+def save_token():
     data = login()
-    pass
+    token = jsonpath(data, '$..token')[0]
+    token_type = jsonpath(data, '$..token_type')[0]
+    member_id = jsonpath(data, '$..id')[0]
+    # 空格拼接token
+    token = " ".join([token_type, token])
+
+    # return {"token": token, "memeber_id": member_id}
+    Context.token = token
+    Context.member_id = member_id
+    Context.leave_amount = leave_amount
+    # 不需要返回值了
+# if __name__ == '__main__':
+#     data = login()
     # 麻烦
     # token = data['data']['token_info']['token']
     # token_type = data['data']['token_info']['token_type']
@@ -46,7 +60,8 @@ if __name__ == '__main__':
     # jsonpath(data, '$..token')[0]
     # jsonpath(data, '$..token_type')[0]
     # jsonpath(data, '$..id')[0]
-
+    # data = save_token()
+    # print(data)
 
 
 

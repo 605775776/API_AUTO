@@ -33,6 +33,8 @@ class DBHandler:
 
     def query(self, sql, args=None, one=True):
         self.cursor.execute(sql, args)
+        # 提交 否则要重新初始化游标对象
+        self.conn.commit()
         if one:
             return self.cursor.fetchone()
         else:
