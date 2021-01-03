@@ -1,7 +1,7 @@
 import os
 
-class Config:
 
+class Config:
     # 项目路径
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -12,7 +12,7 @@ class Config:
     config_path = os.path.join(root_path, 'config')
 
     # 日志配置路径
-    #logger_setting_path = os.path.join(root_path, 'config/config.yaml')
+    # logger_setting_path = os.path.join(root_path, 'config/config.yaml')
     yaml_config_path = os.path.join(config_path, 'config.yaml')
 
     # 测试数据路径
@@ -21,7 +21,7 @@ class Config:
     # 测试用例路径
     case_path = os.path.join(root_path, 'test_cases')
 
-    # log
+    # log日志路径
     log_path = os.path.join(root_path, 'log')
     if not os.path.exists(log_path):
         os.mkdir(log_path)
@@ -31,10 +31,11 @@ class Config:
     if not os.path.exists(report_path):
         os.mkdir(report_path)
 
-class DevConfig(Config):
 
+class DevConfig(Config):
     # 项目的域名
     host = 'http://120.78.128.27:8765/futureloan'
+
 
 config = DevConfig()
 # if __name__ == '__main__':

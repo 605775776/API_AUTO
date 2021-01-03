@@ -1,6 +1,5 @@
 import unittest
 import json
-import yaml
 
 from middleware.helper import generate_mobile
 from common.request_handler import RequestsHandler
@@ -42,7 +41,7 @@ class TestRegister(unittest.TestCase):
         self.db.close()
 
     # 还是要分开 独立测试用例 但是逻辑重复 要应用数据驱动
-    # *test_data 当中的一组测试数据，赋值到data_info这个参数
+    # *data 当中的一组测试数据，赋值到test_data这个参数
     @ddt.data(*data)
     def test_register(self, test_data):
 
@@ -84,7 +83,6 @@ class TestRegister(unittest.TestCase):
                                     test_data['case_id'] + 1,
                                     9,
                                     "测试失败")
-
             # 一定要抛异常 否则测试用例自动通过
             raise e
 

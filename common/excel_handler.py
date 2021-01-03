@@ -1,5 +1,3 @@
-import openpyxl
-
 from openpyxl import load_workbook
 from openpyxl.worksheet.worksheet import Worksheet
 
@@ -10,6 +8,8 @@ from openpyxl.worksheet.worksheet import Worksheet
 4、指定单元格写入数据（使用静态方法，不要使用实例方法）
 
 """
+
+
 class ExcelHandler():
 
     """操作excel"""

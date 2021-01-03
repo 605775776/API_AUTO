@@ -85,14 +85,14 @@ class TestInvest(unittest.TestCase):
         try:
             self.assertEqual()
             # 写入excel数据
-            self.excel_handle.write(Config.data_path, 'Register',
+            self.excel_handle.write(Config.data_path, 'Invest',
                                     test_data['case_id'] + 1,
                                     9,
                                     "测试通过")
         except AssertionError as e:
             # 记录logger
             self.logger.error("测试用例失败,{}".format(e))
-            self.excel_handle.write(Config.data_path, 'Register',
+            self.excel_handle.write(Config.data_path, 'Invest',
                                     test_data['case_id'] + 1,
                                     9,
                                     "测试失败")

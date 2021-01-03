@@ -1,13 +1,5 @@
 import pymysql
-from config.setting import Config
-import yaml
 from pymysql.cursors import DictCursor
-
-# yaml 读取
-
-f = open(Config.yaml_config_path, encoding='utf-8')
-yaml_data = yaml.load(f, Loader=yaml.FullLoader)
-print(yaml_data)
 
 
 class DBHandler:

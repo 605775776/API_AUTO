@@ -1,5 +1,4 @@
 import yaml
-
 from config.setting import Config
 
 
@@ -19,5 +18,7 @@ class YamlHandler:
         with open(self.file, mode='w') as f:
             yaml.dump(data, stream=f, allow_unicode=True)
 
+
 # 读取本项目当中的yaml所有配置项
+
 yaml_data = YamlHandler(Config.yaml_config_path).read_yaml()
