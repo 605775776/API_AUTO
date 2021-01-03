@@ -49,6 +49,16 @@ def save_token():
     Context.member_id = member_id
     Context.leave_amount = leave_amount
     # 不需要返回值了
+
+def save_loan_id():
+    """
+    查询数据库，得到loan_id
+    临时变
+
+
+
+
+
 # if __name__ == '__main__':
 #     data = login()
     # 麻烦

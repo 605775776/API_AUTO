@@ -39,6 +39,7 @@ class TestInvest(unittest.TestCase):
         # 登录
         # 结果
         save_token()
+        save_loan_id()
         # token = Context.token
         # member_id = Context.member_id
 
@@ -81,6 +82,23 @@ class TestInvest(unittest.TestCase):
                              headers=headers)
 
 
+        # 断言1:返回码
+        self.assertEqual(res['code'], test_data['expected'])
+        # 断言2：余额 成功用例要进行数据库校验
+        # 判断是否为成功用例，校验数据库
+        # if test_data['tag'] == 'success'
+        if res['code'] == 0:
+            # 查看数据库结果， 剩余金额-投资金额 == 投资后的金额
+            # 投资金额
+            money = json.loads(test_data['json'])['amount']
+            # 获取投资前的金额
+
+            # 获取投资之后的金额
+            sql = 'select * from member where id =%s;'
+            after_user = self.db.query(sql, args=[member_id])
+            after_money = after_user['leave_amount']
+
+            self.assertEqual(before_money - money, after_money)
 
         try:
             self.assertEqual()
