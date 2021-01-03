@@ -2,6 +2,7 @@ import random
 import yaml
 from common.request_handler import RequestsHandler
 from config.setting import Config
+from jsonpath import jsonpath
 
 # yaml 读取
 f = open(Config.yaml_config_path, encoding='utf-8')
@@ -26,6 +27,25 @@ def login():
                     headers={"X-Lemonban-Media-Type": "lemonban.v2"})
     return res
 
+
+    def save_token():
+        res = login()
+        token = jsonpath(data, '$..token')[0]
+        token_type = jsonpath(data, '$..token_type')[0]
+        member_id = jsonpath(data, '$..id')[0]
+
+if __name__ == '__main__':
+    data = login()
+    pass
+    # 麻烦
+    # token = data['data']['token_info']['token']
+    # token_type = data['data']['token_info']['token_type']
+
+
+    # jsonpath -> 专门用来解析json的路径工具
+    # jsonpath(data, '$..token')[0]
+    # jsonpath(data, '$..token_type')[0]
+    # jsonpath(data, '$..id')[0]
 
 
 
