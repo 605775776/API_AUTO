@@ -1,6 +1,8 @@
 import random
 import re
 import yaml
+
+from common.db_handler import DBHandler
 from common.request_handler import RequestsHandler
 from config.setting import Config
 from jsonpath import jsonpath
@@ -31,10 +33,30 @@ def login():
 
 # Context().loan_id 读
 # 上下文
+
+
 class Context:
-    token = ""
-    member_id = None
-    leave_amount = 0
+    # token = ""
+    # member_id = None
+    # leave_amount = 0
+
+    @property
+    def token(self):
+        """token属性 而且属性会动态变化
+        Context().token 获取token， 自动调用这个方法
+        """
+        data = login()
+        t = jsonpath(data, '$..token')[0]
+        token_type = jsonpath(data, '$..token_type')[0]
+        # 空格拼接token
+        t = " ".join([token_type, t])
+        return t
+
+    @property
+    def member_id(self):
+        data = login()
+        m_id = jsonpath(data, '$..id')[0]
+        return m_id
 
     @property
     def loan_id(self):
@@ -43,27 +65,30 @@ class Context:
         临时变量保存到Context当中
         return 返回loan标当中的id值
         """
-        return
-        pass
-    @property
-    def token(self):
-        pass
+        db = DBHandler()
+        loan = db.query('SELECT * FROM laon WHERE STATUS=2 LIMIT 100;')
+        # 关闭数据库连接
+        db.close()
+        return loan['id']
 
-def save_token():
-    data = login()
-    token = jsonpath(data, '$..token')[0]
-    token_type = jsonpath(data, '$..token_type')[0]
-    member_id = jsonpath(data, '$..id')[0]
-    # 空格拼接token
-    token = " ".join([token_type, token])
 
-    # return {"token": token, "memeber_id": member_id}
-    Context.token = token
-    Context.member_id = member_id
 
-    leave_amount = 0
-    Context.leave_amount = leave_amount
-    # 不需要返回值了
+
+# def save_token():
+#     data = login()
+#     token = jsonpath(data, '$..token')[0]
+#     token_type = jsonpath(data, '$..token_type')[0]
+#     member_id = jsonpath(data, '$..id')[0]
+#     # 空格拼接token
+#     token = " ".join([token_type, token])
+#
+#     # return {"token": token, "memeber_id": member_id}
+#     Context.token = token
+#     Context.member_id = member_id
+#
+#     leave_amount = 0
+#     Context.leave_amount = leave_amount
+#     # 不需要返回值了
 
 
 def replace_label(target):
@@ -75,12 +100,17 @@ def replace_label(target):
     return target
 
 
-def save_loan_id():
-    """
-    查询数据库，得到loan_id
-    临时变量保存到Context当中
-    return 返回loan标当中的id值
-    """
+if __name__ == '__main__':
+    # 实例属性
+    print(Context().token)
+    print(Context().member_id)
+
+# def save_loan_id():
+#     """
+#     查询数据库，得到loan_id
+#     临时变量保存到Context当中
+#     return 返回loan标当中的id值
+#     """
 
 # if __name__ == '__main__':
 #     data = login()

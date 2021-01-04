@@ -38,10 +38,10 @@ class TestInvest(unittest.TestCase):
                             database=yaml_data['database']['database'])
         # 登录
         # 结果
-        save_token()
-        save_loan_id()
+        # save_token() 不这么用了  用propery
+        # save_loan_id()
         # token = Context.token
-        # member_id = Context.member_id
+        # member_id = Context.member_idt
 
 
     def tearDown(self) -> None:
@@ -51,10 +51,11 @@ class TestInvest(unittest.TestCase):
     @ddt.data(*data)
     def test_invest(self, test_data):
 
+        # 替换动态的数据
+        token = Context().token
+        member_id = Context().member_id
+        loan_id = Context().loan_id
 
-
-        token = Context.token
-        member_id = Context.member_id
 
         # 查询数据库
         sql = 'select * from member where id =%s;'
@@ -68,9 +69,6 @@ class TestInvest(unittest.TestCase):
         if '#wrong_member#' in test_data['json']:
             test_data['json'] = test_data['json'].replace("#wrong_member#", str(member_id + 1))
 
-
-
-
         # 在原headers+token 添加Authorization
         headers = json.loads(test_data['headers'])
         headers['Authorization'] = token
@@ -80,7 +78,6 @@ class TestInvest(unittest.TestCase):
                              test_data['method'],
                              json=json.loads(test_data['json']),
                              headers=headers)
-
 
         # 断言1:返回码
         self.assertEqual(res['code'], test_data['expected'])
