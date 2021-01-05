@@ -8,7 +8,7 @@ from common.logger_handler import LoggerHandler
 from common.db_handler import DBHandler
 from libs import ddt
 from config.setting import Config, DevConfig
-from middleware.helper import Context
+from middleware.helper import Context, replace_label
 
 f = open(Config.yaml_config_path, encoding='utf-8')
 yaml_data = yaml.load(f, Loader=yaml.FullLoader)
@@ -61,6 +61,9 @@ class TestInvest(unittest.TestCase):
         sql = 'select * from member where id =%s;'
         user = self.db.query(sql, args=[member_id])
         before_money = user['leave_amount']
+
+        # 利用正则
+        test_data['json'] = replace_label(test_data['json'])
 
         # 判断 #exist_phone#
         if '#member_id#' in test_data['json']:
