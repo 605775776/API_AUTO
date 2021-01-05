@@ -8,7 +8,7 @@ from common.logger_handler import LoggerHandler
 from common.db_handler import DBHandler
 from libs import ddt
 from config.setting import Config, DevConfig
-from middleware.helper import save_token, Context
+from middleware.helper import Context
 
 f = open(Config.yaml_config_path, encoding='utf-8')
 yaml_data = yaml.load(f, Loader=yaml.FullLoader)

@@ -37,18 +37,21 @@ class DBHandler:
         self.conn.close()
 
 
-# if __name__ == '__main__':
-#     f = open(Config.yaml_config_path, encoding='utf-8')
-#     yaml_data = yaml.load(f, Loader=yaml.FullLoader)
-#     # print(yaml_data)
-#
-#     db = DBHandler(host=yaml_data['database']['host'],
-#                    port=yaml_data['database']['port'],
-#                    user=yaml_data['database']['user'],
-#                    password=yaml_data['database']['password'],
-#                    charset=yaml_data['database']['charset'],
-#                    database=yaml_data['database']['database']
-#                    )
-#
-#     res = db.query("select * from crm_resource where id = 1")
-#     print(res)
+if __name__ == '__main__':
+
+    from config.setting import Config
+    import yaml
+    f = open(Config.yaml_config_path, encoding='utf-8')
+    yaml_data = yaml.load(f, Loader=yaml.FullLoader)
+    # print(yaml_data)
+
+    db = DBHandler(host=yaml_data['database']['host'],
+                   port=yaml_data['database']['port'],
+                   user=yaml_data['database']['user'],
+                   password=yaml_data['database']['password'],
+                   charset=yaml_data['database']['charset'],
+                   database=yaml_data['database']['database']
+                   )
+
+    res = db.query("select * from crm_resource where id = 1")
+    print(res)

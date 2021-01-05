@@ -22,12 +22,12 @@ excel:
 #  cursorclass: 'DictCursor'
 
 database:
-  host: "172.16.1.89"
+  host: "mysql-test.klxuexi.net"
   port: 3306
-  user: "rlsuser"
-  password: 'paa!v372Gw'
+  user: "root"
+  password: '123456'
   charset: 'utf8'
-  database: 'rls_edu_crm'
+  database: 'edu_crm'
   cursorclass: 'DictCursor'
 
 user:
