@@ -1538,8 +1538,8 @@ class HTMLTestReport(Template_CN):
             chart_script=chart
 
         )
-        print(str(output.encode('utf8')))
-        self.stream.write(str(output.encode('utf8')))
+
+        self.stream.write(output.encode('utf8'))
 
     def _generate_stylesheet(self):
         return self.STYLESHEET_TMPL

@@ -58,8 +58,13 @@ file_path = os.path.join(report_path, file_name, )
 
 
 # 要用二进制打开
-with open(file_path, 'wb') as f:
+with open(file_path, 'wb+') as f:
     runner = HTMLTestReport(stream=f,
                             verbosity=2,
                             )
+# f = open(file_path, 'wb')
+# runner = HTMLTestReport(stream=f,
+#                         verbosity=2,
+#                             )
+
     runner.run(suite)
