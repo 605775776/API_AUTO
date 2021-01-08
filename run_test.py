@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 from common.HwTestReport import HTMLTestReport
-from test_cases import test_login
+from test_cases import test_abc
 #
 # 收集测试用例 TestLoader 加载器 加载测试用例
 # 放到测试集合和测试套件 TestSuite
@@ -21,7 +21,7 @@ case_path = os.path.join(dir_path, 'test_cases')
 # print(case_path)
 
 # 加载多个模块测试用例 保存到测试套件中
-suite = testloader.loadTestsFromModule(test_login)
+suite = testloader.loadTestsFromModule(test_abc)
 # suite2 = testloader.loadTestsFromModule(test_login)
 
 # 添加指定的测试类 快捷键alt+enter
