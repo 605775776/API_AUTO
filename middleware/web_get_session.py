@@ -15,11 +15,11 @@ class Web_Get_Session:
 
     def web_get_session(self):
         driver = webdriver.Chrome(options=self.options)
-        driver.get("https://sso.test.klxuexi.net/login")
+        driver.get("url")
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located(self.submit_login))
-        driver.find_element(*self.input_username).send_keys('aaaa')
-        driver.find_element(*self.input_password).send_keys('aaaa')
-        driver.find_element(*self.input_validateCode).send_keys('aaaa')
+        driver.find_element(*self.input_username).send_keys('username')
+        driver.find_element(*self.input_password).send_keys('password')
+        driver.find_element(*self.input_validateCode).send_keys('validateCode')
         driver.find_element(*self.submit_login).click()
         return driver
 
