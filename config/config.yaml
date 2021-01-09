@@ -21,18 +21,10 @@ excel:
 #  database: 'futureloan'
 #  cursorclass: 'DictCursor'
 
-database:
-  host: "mysql-test.klxuexi.net"
-  port: 3306
-  user: "root"
-  password: '123456'
-  charset: 'utf8'
-  database: 'edu_crm'
-  cursorclass: 'DictCursor'
 
-user:
-  mobile_phone: '13712341234'
-  pwd: '12345678'
+#user:
+#  mobile_phone: '13712341234'
+#  pwd: '12345678'
 
 
 
