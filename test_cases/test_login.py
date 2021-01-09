@@ -1,12 +1,12 @@
 import unittest
 import warnings
 
-from common.logger_handler import LoggerHandler
 from common.request_handler import RequestsHandler
 from common.excel_handler import ExcelHandler
-from middleware.yaml_handler import yaml_data
 from config.setting import Config
 from libs import ddt
+from middleware.get_logger import logger
+
 
 
 @ddt.ddt
@@ -15,12 +15,6 @@ class TestLogin(unittest.TestCase):
     excel_handle = ExcelHandler(Config.data_path, 'Register')
     data = excel_handle.read()
 
-    # 读取日志级别
-    name = yaml_data['logger']['name']
-    level = yaml_data['logger']['level']
-    # file = yaml_data['logger']['file']
-    file = Config.log_path + '\\' + yaml_data['logger']['file']
-    logger = LoggerHandler(name, level, file)
 
     def setUp(self) -> None:
         warnings.simplefilter('ignore', ResourceWarning)
@@ -45,7 +39,7 @@ class TestLogin(unittest.TestCase):
                                     "测试通过")
         except AssertionError as e:
             # 记录logger
-            self.logger.error("测试用例失败,{}".format(e))
+            logger.error("测试用例失败,{}".format(e))
             self.excel_handle.write(Config.data_path, 'Login',
                                     test_data['case_id'] + 1,
                                     9,

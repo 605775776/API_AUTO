@@ -4,15 +4,15 @@ import yaml
 
 from common.request_handler import RequestsHandler
 from common.excel_handler import ExcelHandler
-from common.logger_handler import LoggerHandler
-from common.db_handler import DBHandler
 from libs import ddt
 from config.setting import Config, DevConfig
+from middleware.get_db import MyDBHandler
+from middleware.get_logger import logger
 from middleware.helper import Context, replace_label
 
-f = open(Config.yaml_config_path, encoding='utf-8')
-yaml_data = yaml.load(f, Loader=yaml.FullLoader)
-print(yaml_data)
+# f = open(Config.yaml_config_path, encoding='utf-8')
+# yaml_data = yaml.load(f, Loader=yaml.FullLoader)
+# print(yaml_data)
 
 
 @ddt.ddt
@@ -22,20 +22,16 @@ class TestInvest(unittest.TestCase):
     data = excel_handle.read()
 
     # 读取日志级别
-    name = yaml_data['logger']['name']
-    level = yaml_data['logger']['level']
+    # name = yaml_data['logger']['name']
+    # level = yaml_data['logger']['level']
     # file = yaml_data['logger']['file']
-    file = Config.log_path + '\\' + yaml_data['logger']['file']
-    logger = LoggerHandler(name, level, file)
+    # file = Config.log_path + '\\' + yaml_data['logger']['file']
+    # logger = LoggerHandler(name, level, file)
+
 
     def setUp(self) -> None:
         self.req = RequestsHandler()
-        self.db = DBHandler(host=yaml_data['database']['host'],
-                            port=yaml_data['database']['port'],
-                            user=yaml_data['database']['user'],
-                            password=yaml_data['database']['password'],
-                            charset=yaml_data['database']['charset'],
-                            database=yaml_data['database']['database'])
+        self.db = MyDBHandler()
         # 登录
         # 结果
         # save_token() 不这么用了  用propery
@@ -109,7 +105,7 @@ class TestInvest(unittest.TestCase):
                                     "测试通过")
         except AssertionError as e:
             # 记录logger
-            self.logger.error("测试用例失败,{}".format(e))
+            logger.error("测试用例失败,{}".format(e))
             self.excel_handle.write(Config.data_path, 'Invest',
                                     test_data['case_id'] + 1,
                                     9,
