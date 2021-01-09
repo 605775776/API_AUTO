@@ -6,7 +6,8 @@ from common.db_handler import DBHandler
 from common.request_handler import RequestsHandler
 from config.setting import Config
 from jsonpath import jsonpath
-
+from middleware.web_get_session import Web_Get_Session
+from selenium import webdriver
 # yaml 读取
 f = open(Config.yaml_config_path, encoding='utf-8')
 yaml_data = yaml.load(f, Loader=yaml.FullLoader)
@@ -74,6 +75,7 @@ class Context:
 
 
 
+
 # def save_token():
 #     data = login()
 #     token = jsonpath(data, '$..token')[0]
@@ -89,10 +91,15 @@ class Context:
 #     leave_amount = 0
 #     Context.leave_amount = leave_amount
 #     # 不需要返回值了
+def get_session():
+    re_pattern = r"=\"(.*?)\"\)>"
+    session = re.findall(re_pattern, str(Web_Get_Session().web_get_session()))
+    return ''.join(session)
+
 
 
 def replace_label(target):
-    re_pattern = r"#(.*?)#"
+    re_pattern = r"session=\"(.*?)\"\)>"
     while re.findall(re_pattern, target):
         key = re.search(re_pattern, target).group(1)
         # value = getattr(CaseKeys, key, '')
@@ -101,9 +108,20 @@ def replace_label(target):
 
 
 if __name__ == '__main__':
+
+    a = get_session()
+    print(a)
     # 实例属性
-    print(Context().token)
-    print(Context().member_id)
+    # print(Context().token)
+    # print(Context().member_id)
+    #
+    # a = '<selenium.webdriver.chrome.webdriver.WebDriver (session="c5dac9099b04c21f1602d769935ffe10")>'
+    # re_pattern = r"session=\"(.*?)\"\)>"
+    # b = re.findall(re_pattern, a)
+    # print(b)
+    # print(type(b))
+    # c = ''.join(b)
+    # print(c)
 
 # def save_loan_id():
 #     """
